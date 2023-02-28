@@ -790,7 +790,11 @@ void QLevel13GenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry [in
             if ($item[colorful toad].have() && $item[colorful toad].item_is_usable() && $item[colorful toad].to_effect().have_effect() == 0 && !have_prismatic_damage && my_path().id != PATH_2CRS)	
                 methods.listAppend("Use colorful toad for +prismatic damage.");
             familiar desired_familiar = $familiar[none];
-            if ($familiar[mu].familiar_is_usable())
+            
+            if ($familiar[Shorter-Order Cook].familiar_is_usable()){
+                desired_familiar = $familiar[Shorter-Order Cook];
+            }
+            else if ($familiar[mu].familiar_is_usable())
             {
             	methods.listAppend("Run extra +familiar weight for your mu; it will attack more often.");
             	desired_familiar = $familiar[mu];
@@ -819,7 +823,7 @@ void QLevel13GenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry [in
             	methods.listAppend("Switch to familiar " + desired_familiar + ".");
             }
             item [int] items_to_equip;
-            foreach it in $items[hand in glove,bottle opener belt buckle,buddy bjorn,smirking shrunken head,kremlin's greatest briefcase]
+            foreach it in $items[hand in glove,bottle opener belt buckle,buddy bjorn,smirking shrunken head,kremlin's greatest briefcase, hot plate]
             {
             	if (!it.have()) continue;
                 if (it.equipped()) continue;
